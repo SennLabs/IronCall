@@ -1,0 +1,32 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "url": "https://upload.example.com/avatar",
+    "body": {
+      "type": "multipart",
+      "parts": [
+        {
+          "name": "avatar",
+          "type": "file",
+          "path": "me.png",
+          "enabled": true
+        },
+        {
+          "name": "user",
+          "type": "text",
+          "value": "42",
+          "enabled": true
+        }
+      ]
+    },
+    "name": "POST /avatar",
+    "method": "POST"
+  },
+  "warnings": [
+    "a custom file name isn't supported; the file's own name is sent",
+    "`me.png` doesn't exist relative to the current folder; pick it again in the body editor"
+  ]
+}

@@ -1,0 +1,25 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "text",
+      "content": "q=hello%20world%20%26%20more&raw%20value"
+    },
+    "name": "POST /api",
+    "method": "POST",
+    "url": "https://search.example.com/api"
+  },
+  "warnings": [
+    "no Content-Type was given, so curl sends this body as application/x-www-form-urlencoded; kept as is"
+  ]
+}

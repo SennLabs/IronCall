@@ -1,0 +1,30 @@
+[package]
+name = "ironcall-store"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+thiserror.workspace = true
+ironcall-core.workspace = true
+serde.workspace = true
+serde-saphyr.workspace = true
+indexmap.workspace = true
+memchr = "2.8"
+serde_json.workspace = true
+tracing.workspace = true
+blake3 = "1.8"
+notify = "8.2"
+notify-debouncer-full = "0.7"
+trash = "5.2"
+unicode-normalization = "0.1.25"
+deunicode = "1.6"
+rusqlite = { version = "0.40", features = ["bundled"] }
+
+[dev-dependencies]
+proptest.workspace = true
+tempfile.workspace = true
+
+[lints]
+workspace = true

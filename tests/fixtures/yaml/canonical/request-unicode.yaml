@@ -1,0 +1,16 @@
+schema: 'ironcall/request@1'
+id: '01J9Z3K7T2V8Q4M6N0P5R1S3WB'
+name: 'Ünïcödé — 日本語 🚀'
+description: |
+  Grüße aus Perth 🦘
+  Ligne deux: «citation»
+method: 'GET'
+url: 'https://example.com/search?q=日本'
+headers:
+- {name: 'X-Greeting', value: 'Kia ora — 你好', enabled: true}
+body:
+  type: 'text'
+  content: |
+    Привет, мир
+    שלום עולם
+    مرحبا بالعالم

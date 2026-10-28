@@ -1,0 +1,41 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "params": [
+      {
+        "name": "page",
+        "value": "2",
+        "enabled": true
+      },
+      {
+        "name": "q",
+        "value": "a b",
+        "enabled": true
+      }
+    ],
+    "headers": [
+      {
+        "name": "accept",
+        "value": "application/json",
+        "enabled": true
+      },
+      {
+        "name": "user-agent",
+        "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+        "enabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "session=4f2a9c; theme=dark",
+        "enabled": true
+      }
+    ],
+    "name": "GET /api/v2/projects",
+    "method": "GET",
+    "url": "https://app.example.com/api/v2/projects"
+  },
+  "warnings": []
+}

@@ -1,0 +1,32 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "url": "https://upload.example.com/files",
+    "body": {
+      "type": "multipart",
+      "parts": [
+        {
+          "name": "file",
+          "type": "file",
+          "path": "./report.pdf",
+          "contentType": "application/pdf",
+          "enabled": true
+        },
+        {
+          "name": "note",
+          "type": "text",
+          "value": "hello world",
+          "enabled": true
+        }
+      ]
+    },
+    "name": "POST /files",
+    "method": "POST"
+  },
+  "warnings": [
+    "`./report.pdf` doesn't exist relative to the current folder; pick it again in the body editor"
+  ]
+}

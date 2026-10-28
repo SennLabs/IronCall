@@ -1,0 +1,135 @@
+.bar {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-subtle);
+  min-height: 32px;
+}
+
+.list {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0 var(--space-1) 0 var(--space-3);
+  border-right: 1px solid var(--border);
+  max-width: 240px;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.active {
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: inset 0 2px 0 var(--accent);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 0;
+  align-self: stretch;
+  outline: none;
+}
+
+.tab:has(.label:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.preview .title {
+  font-style: italic;
+}
+
+.deleted .title {
+  text-decoration: line-through;
+}
+
+.scratchTag {
+  font-size: 0.72em;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0 3px;
+}
+
+.conflict {
+  color: var(--warning);
+}
+
+.close {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  display: grid;
+  place-items: center;
+}
+
+.close > span {
+  grid-area: 1 / 1;
+}
+
+/* The close button shows ✕ on the active or hovered tab, and ● when dirty (✕ again
+   while the pointer is on the button). Rules are in ascending specificity. */
+.dot {
+  visibility: hidden;
+  font-size: 0.7em;
+}
+
+.x {
+  visibility: hidden;
+}
+
+.active .x {
+  visibility: visible;
+}
+
+.dirty .dot {
+  visibility: visible;
+  color: var(--text);
+}
+
+.dirty .x {
+  visibility: hidden;
+}
+
+.tab:hover .x {
+  visibility: visible;
+}
+
+.tab:hover .dirty .x {
+  visibility: hidden;
+}
+
+.tab:hover .dirty:hover .dot {
+  visibility: hidden;
+}
+
+.tab:hover .dirty:hover .x {
+  visibility: visible;
+}
+
+.add {
+  font-size: 1.2em;
+  padding: 0 var(--space-3);
+}

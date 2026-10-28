@@ -1,0 +1,22 @@
+schema: 'ironcall/request@1'
+id: '01J9Z3K7T2V8Q4M6N0P5R1S3WN'
+name: 'All assertion shapes'
+method: 'GET'
+url: 'https://example.com/items'
+extract:
+- {var: 'token', from: 'body', path: '$.token', sensitive: true}
+- {var: 'session', from: 'cookie', name: 'sid', sensitive: true}
+- {var: 'etag', from: 'header', name: 'ETag', sensitive: false}
+- {var: 'code', from: 'regex', pattern: "code=(\\d+)", sensitive: false}
+assert:
+- {target: 'status', op: 'in', value: [200, 201]}
+- {target: 'status', op: 'eq', value: '200'}
+- {target: 'header', name: 'Content-Type', op: 'contains', value: 'json'}
+- {target: 'body', path: '$.items', op: 'type', value: 'array'}
+- {target: 'body', path: '$.deleted', op: 'notExists'}
+- {target: 'bodyText', op: 'matches', value: "^\\{"}
+- {target: 'size', op: 'lte', value: 1048576}
+- {target: 'duration', op: 'lt', value: 1.5, enabled: false}
+settings:
+  httpVersion: 'http2'
+  bypassProxy: true

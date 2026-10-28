@@ -1,0 +1,1 @@
+curl 'https://login.example.com/session' -X POST -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:131.0) Gecko/20100101 Firefox/131.0' -H 'Accept: text/html' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: https://login.example.com' -H 'Connection: keep-alive' --data-raw 'username=ada%40example.com&password=hunter2&remember=on'

@@ -1,0 +1,77 @@
+{
+  "swagger": "2.0",
+  "info": { "title": "Swagger 2 forms and security", "version": "1" },
+  "host": "legacy.example.com",
+  "basePath": "/api/",
+  "schemes": ["http", "https"],
+  "securityDefinitions": {
+    "key": { "type": "apiKey", "in": "query", "name": "token" },
+    "basic": { "type": "basic" },
+    "oauth": { "type": "oauth2", "flow": "implicit", "authorizationUrl": "https://legacy.example.com/auth", "scopes": {} }
+  },
+  "security": [{ "key": [] }],
+  "parameters": {
+    "PageParam": { "name": "page", "in": "query", "type": "integer", "default": 1 }
+  },
+  "paths": {
+    "/users": {
+      "parameters": [{ "$ref": "#/parameters/PageParam" }],
+      "get": {
+        "tags": ["users"],
+        "summary": "List users",
+        "parameters": [{ "name": "q", "in": "query", "required": true, "type": "string", "x-example": "ada" }],
+        "responses": { "200": { "description": "ok" } }
+      },
+      "post": {
+        "tags": ["users"],
+        "summary": "Create user",
+        "security": [{ "basic": [] }],
+        "parameters": [{
+          "name": "body", "in": "body", "required": true,
+          "schema": { "$ref": "#/definitions/User" }
+        }],
+        "responses": { "201": { "description": "created" } }
+      }
+    },
+    "/users/{id}/avatar": {
+      "post": {
+        "tags": ["users"],
+        "summary": "Upload avatar",
+        "consumes": ["multipart/form-data"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" },
+          { "name": "caption", "in": "formData", "type": "string", "default": "hi" },
+          { "name": "file", "in": "formData", "type": "file", "required": true }
+        ],
+        "responses": { "200": { "description": "ok" } }
+      }
+    },
+    "/session": {
+      "post": {
+        "tags": ["auth"],
+        "summary": "Log in",
+        "consumes": ["application/x-www-form-urlencoded"],
+        "security": [],
+        "parameters": [
+          { "name": "user", "in": "formData", "type": "string", "x-example": "ada" },
+          { "name": "pass", "in": "formData", "type": "string" }
+        ],
+        "responses": { "200": { "description": "ok" } }
+      }
+    },
+    "/oauth-only": {
+      "get": {
+        "summary": "OAuth",
+        "security": [{ "oauth": [] }],
+        "responses": { "200": { "description": "ok" } }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": { "name": { "type": "string" } },
+      "example": { "name": "Ada Lovelace" }
+    }
+  }
+}

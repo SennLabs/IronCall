@@ -1,0 +1,14 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "method": "DELETE",
+    "url": "https://api.example.com/items/42",
+    "name": "DELETE /items/42"
+  },
+  "warnings": [
+    "reading the body from stdin isn't supported; skipped"
+  ]
+}

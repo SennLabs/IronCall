@@ -1,0 +1,29 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "url": "https://httpbin.org/get",
+    "params": [
+      {
+        "name": "show_env",
+        "value": "1",
+        "enabled": true
+      },
+      {
+        "name": "x",
+        "value": "a b",
+        "enabled": true
+      },
+      {
+        "name": "y",
+        "value": "/path",
+        "enabled": true
+      }
+    ],
+    "name": "GET /get",
+    "method": "GET"
+  },
+  "warnings": []
+}

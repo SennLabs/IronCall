@@ -1,0 +1,11 @@
+schema: 'ironcall/request@1'
+id: '01J9Z3K7T2V8Q4M6N0P5R1S3WM'
+name: 'SOAP call'
+method: 'POST'
+url: 'https://example.com/soap'
+body:
+  type: 'xml'
+  content: |-
+    <Envelope>
+      <Body/>
+    </Envelope>

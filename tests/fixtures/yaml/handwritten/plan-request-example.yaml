@@ -1,0 +1,39 @@
+# PLAN.md §4.1 example, as a person would write it (flow maps, comments, double quotes).
+schema: "ironcall/request@1"
+id: "01J9Z3K7T2V8Q4M6N0P5R1S3W7"     # ULID, stable for life
+name: "Create user"
+description: |
+  Creates a user. Markdown supported.
+method: "POST"                         # any token allowed (PROPFIND, PURGE, …)
+url: "{{baseUrl}}/users/:orgId/members"
+pathParams:
+  - { name: "orgId", value: "{{orgId}}" }
+params:
+  - { name: "notify", value: "true", enabled: true }
+headers:
+  - { name: "Content-Type", value: "application/json", enabled: true }
+auth:
+  type: "inherit"
+body:
+  type: "json"
+  content: |
+    {
+      "name": "{{userName}}",
+      "email": "{{$randomEmail}}"
+    }
+vars:
+  userName: "Ada"
+extract:
+  - { var: "userId", from: "body", path: "$.id", sensitive: false }
+assert:
+  - { target: "status", op: "eq", value: 201 }
+  - { target: "body", path: "$.email", op: "exists" }
+  - { target: "duration", op: "lt", value: 500 }
+settings:
+  timeoutMs: 30000
+  followRedirects: true
+  maxRedirects: 10
+  verifyTls: true
+  httpVersion: "auto"     # auto | http1 | http2
+  freshConnection: false
+  encodeUrl: true

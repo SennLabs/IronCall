@@ -1,0 +1,19 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.example.com/data",
+    "name": "GET /data"
+  },
+  "warnings": [
+    "-o: output options don't apply in IronCall",
+    "-w: output options don't apply in IronCall",
+    "--cert: client certificates and TLS options aren't supported yet (Settings → Network has custom CAs)",
+    "--proxy: proxy options are ignored; IronCall uses Settings → Network",
+    "--retry: not supported; ignored",
+    "unknown options ignored: --frobnicate"
+  ]
+}

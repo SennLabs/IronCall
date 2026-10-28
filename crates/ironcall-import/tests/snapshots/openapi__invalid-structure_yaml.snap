@@ -1,0 +1,47 @@
+---
+source: tests/openapi.rs
+expression: plan
+---
+{
+  "version": "openApi30",
+  "title": "Odd but parseable",
+  "description": null,
+  "servers": [],
+  "environment": [
+    {
+      "name": "baseUrl",
+      "value": "",
+      "secret": false
+    }
+  ],
+  "rootAuth": null,
+  "authSummary": [],
+  "tree": [
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000001",
+      "name": "Fine",
+      "method": "GET",
+      "url": "{{baseUrl}}/ok"
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000002",
+      "name": "Missing responses is tolerated",
+      "method": "POST",
+      "url": "{{baseUrl}}/weird-method"
+    }
+  ],
+  "warnings": [
+    {
+      "message": "operation isn't an object; skipped",
+      "location": "#/paths/~1not-an-operation/get"
+    },
+    {
+      "message": "the spec lists no servers; set `baseUrl` in the environment",
+      "location": "#/servers"
+    }
+  ]
+}

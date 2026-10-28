@@ -1,0 +1,85 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: var(--space-1) var(--space-2);
+  font-size: 12px;
+}
+
+.table td {
+  border-top: 1px solid var(--border);
+  padding: 0;
+  vertical-align: middle;
+}
+
+/* Two classes so this beats the base `input` styles in controls.css. */
+.table .cell {
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.table .invalid {
+  color: var(--danger);
+  text-decoration: underline wavy var(--danger);
+}
+
+.check {
+  width: 56px;
+  text-align: center;
+}
+
+.action {
+  width: 36px;
+  text-align: center;
+}
+
+.secret {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0 var(--space-1) 0 var(--space-2);
+  min-width: 0;
+}
+
+.secret button {
+  padding: 1px var(--space-1);
+  font-size: 12px;
+}
+
+.secretValue {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.missing {
+  color: var(--warning);
+  font-style: italic;
+}
+
+.ghostRow .cell::placeholder {
+  font-style: italic;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}

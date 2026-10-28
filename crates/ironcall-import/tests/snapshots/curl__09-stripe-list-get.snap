@@ -1,0 +1,29 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "params": [
+      {
+        "name": "limit",
+        "value": "3",
+        "enabled": true
+      },
+      {
+        "name": "created[gte]",
+        "value": "1700000000",
+        "enabled": true
+      }
+    ],
+    "auth": {
+      "type": "basic",
+      "username": "sk_test_4eC39HqLyjWDarjtT1zdp7dc",
+      "password": ""
+    },
+    "name": "GET /v1/charges",
+    "method": "GET",
+    "url": "https://api.stripe.com/v1/charges"
+  },
+  "warnings": []
+}

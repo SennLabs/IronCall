@@ -1,0 +1,28 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "X-Multi",
+        "value": "tab\there",
+        "enabled": true
+      },
+      {
+        "name": "Content-Type",
+        "value": "text/plain",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "text",
+      "content": "it's \"quoted\" and $literal"
+    },
+    "name": "POST /notes",
+    "method": "POST",
+    "url": "https://api.example.com/notes"
+  },
+  "warnings": []
+}

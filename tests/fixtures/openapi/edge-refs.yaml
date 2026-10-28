@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: Refs edge cases
+  version: "1"
+servers:
+  - url: https://api.example.com
+paths:
+  /chained/{id}:
+    $ref: "#/components/pathItems/Chained"
+  /cycle:
+    get:
+      summary: Parameter ref cycle
+      parameters:
+        - $ref: "#/components/parameters/LoopA"
+        - $ref: "#/components/parameters/Limit"
+      responses:
+        "200": { description: ok }
+  /external:
+    post:
+      summary: External body ref
+      requestBody:
+        $ref: "./shared.yaml#/components/requestBodies/Thing"
+      responses:
+        "200": { description: ok }
+  /broken:
+    get:
+      summary: Broken ref
+      parameters:
+        - $ref: "#/components/parameters/DoesNotExist"
+      responses:
+        "200": { description: ok }
+  /recursive:
+    post:
+      summary: Recursive schema
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Node"
+            example:
+              name: root
+              children: [{ name: leaf, children: [] }]
+      responses:
+        "200": { description: ok }
+components:
+  pathItems:
+    Chained:
+      parameters:
+        - $ref: "#/components/parameters/IdAlias"
+      get:
+        summary: Path item via ref, parameter via a ref chain
+        responses:
+          "200": { description: ok }
+  parameters:
+    IdAlias:
+      $ref: "#/components/parameters/Id"
+    Id:
+      name: id
+      in: path
+      required: true
+      schema: { type: string, example: abc-123 }
+    LoopA:
+      $ref: "#/components/parameters/LoopB"
+    LoopB:
+      $ref: "#/components/parameters/LoopA"
+    Limit:
+      name: limit
+      in: query
+      schema: { type: integer, default: 25 }
+  schemas:
+    Node:
+      type: object
+      properties:
+        name: { type: string }
+        children:
+          type: array
+          items: { $ref: "#/components/schemas/Node" }

@@ -1,0 +1,28 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "text/xml; charset=utf-8",
+        "enabled": true
+      },
+      {
+        "name": "SOAPAction",
+        "value": "\"urn:GetStudy\"",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "xml",
+      "content": "<?xml version=\"1.0\"?><Envelope><Body><GetStudy id=\"7\"/></Body></Envelope>"
+    },
+    "name": "POST /soap",
+    "method": "POST",
+    "url": "https://ws.example.com/soap"
+  },
+  "warnings": []
+}

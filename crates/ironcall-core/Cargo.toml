@@ -1,0 +1,38 @@
+[package]
+name = "ironcall-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+serde.workspace = true
+serde_json = { workspace = true, features = ["preserve_order"] }
+serde-saphyr.workspace = true
+indexmap.workspace = true
+ulid.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+tracing-appender.workspace = true
+encoding_rs = "0.8.42"
+quick-xml = "0.42.0"
+secrecy.workspace = true
+uuid = { version = "1.27", features = ["v4"] }
+fastrand = "2.5"
+base64 = "0.22"
+specta = { workspace = true, optional = true, features = ["derive", "indexmap", "serde_json"] }
+specta-typescript = { workspace = true, optional = true }
+serde_json_path = "0.7.2"
+regex = "1.13.1"
+futures-util = { version = "0.3.34", default-features = false, features = ["std", "alloc"] }
+
+[features]
+# Derives `specta::Type` on model types so the Tauri app can export them to TypeScript.
+specta = ["dep:specta", "dep:specta-typescript"]
+
+[lints]
+workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

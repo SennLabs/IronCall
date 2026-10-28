@@ -1,0 +1,64 @@
+---
+source: tests/openapi.rs
+expression: plan
+---
+{
+  "version": "openApi30",
+  "title": "YAML anchors",
+  "description": null,
+  "servers": [
+    "https://anchors.example.com"
+  ],
+  "environment": [
+    {
+      "name": "baseUrl",
+      "value": "https://anchors.example.com",
+      "secret": false
+    }
+  ],
+  "rootAuth": null,
+  "authSummary": [],
+  "tree": [
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000001",
+      "name": "A",
+      "method": "GET",
+      "url": "{{baseUrl}}/a",
+      "params": [
+        {
+          "name": "page",
+          "value": "1",
+          "enabled": false
+        },
+        {
+          "name": "size",
+          "value": "50",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000002",
+      "name": "B",
+      "method": "GET",
+      "url": "{{baseUrl}}/b",
+      "params": [
+        {
+          "name": "page",
+          "value": "1",
+          "enabled": false
+        },
+        {
+          "name": "size",
+          "value": "50",
+          "enabled": false
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}

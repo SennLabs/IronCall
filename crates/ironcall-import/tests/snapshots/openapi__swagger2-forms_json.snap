@@ -1,0 +1,185 @@
+---
+source: tests/openapi.rs
+expression: plan
+---
+{
+  "version": "swagger2",
+  "title": "Swagger 2 forms and security",
+  "description": null,
+  "servers": [
+    "https://legacy.example.com/api",
+    "http://legacy.example.com/api"
+  ],
+  "environment": [
+    {
+      "name": "baseUrl",
+      "value": "https://legacy.example.com/api",
+      "secret": false
+    },
+    {
+      "name": "apiKey",
+      "value": "",
+      "secret": true
+    },
+    {
+      "name": "username",
+      "value": "",
+      "secret": false
+    },
+    {
+      "name": "password",
+      "value": "",
+      "secret": true
+    },
+    {
+      "name": "token",
+      "value": "",
+      "secret": true
+    }
+  ],
+  "rootAuth": {
+    "type": "apiKey",
+    "key": "token",
+    "value": "{{apiKey}}",
+    "in": "query"
+  },
+  "authSummary": [
+    "key → API key query `token={{apiKey}}` on the collection",
+    "basic → Basic auth ({{username}}, {{password}}) on the requests that use it",
+    "oauth → Bearer {{token}} on the requests that use it (OAuth flows are post-V1)"
+  ],
+  "tree": [
+    {
+      "kind": "folder",
+      "name": "users",
+      "description": null,
+      "items": [
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000001",
+          "name": "List users",
+          "method": "GET",
+          "url": "{{baseUrl}}/users",
+          "params": [
+            {
+              "name": "page",
+              "value": "1",
+              "enabled": false
+            },
+            {
+              "name": "q",
+              "value": "ada",
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000002",
+          "name": "Create user",
+          "method": "POST",
+          "url": "{{baseUrl}}/users",
+          "params": [
+            {
+              "name": "page",
+              "value": "1",
+              "enabled": false
+            }
+          ],
+          "auth": {
+            "type": "basic",
+            "username": "{{username}}",
+            "password": "{{password}}"
+          },
+          "body": {
+            "type": "json",
+            "content": "{\n  \"name\": \"Ada Lovelace\"\n}"
+          }
+        },
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000003",
+          "name": "Upload avatar",
+          "method": "POST",
+          "url": "{{baseUrl}}/users/:id/avatar",
+          "pathParams": [
+            {
+              "name": "id",
+              "value": ""
+            }
+          ],
+          "body": {
+            "type": "multipart",
+            "parts": [
+              {
+                "name": "caption",
+                "type": "text",
+                "value": "hi",
+                "enabled": true
+              },
+              {
+                "name": "file",
+                "type": "file",
+                "enabled": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "folder",
+      "name": "auth",
+      "description": null,
+      "items": [
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000004",
+          "name": "Log in",
+          "method": "POST",
+          "url": "{{baseUrl}}/session",
+          "auth": {
+            "type": "none"
+          },
+          "body": {
+            "type": "formUrlencoded",
+            "fields": [
+              {
+                "name": "user",
+                "value": "ada",
+                "enabled": true
+              },
+              {
+                "name": "pass",
+                "value": "",
+                "enabled": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000005",
+      "name": "OAuth",
+      "method": "GET",
+      "url": "{{baseUrl}}/oauth-only",
+      "auth": {
+        "type": "bearer",
+        "token": "{{token}}"
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "message": "`oauth` is OAuth 2.0 / OpenID Connect: sent as a Bearer `{{token}}`; getting the token is up to you until OAuth support (post-V1)",
+      "location": null
+    }
+  ]
+}

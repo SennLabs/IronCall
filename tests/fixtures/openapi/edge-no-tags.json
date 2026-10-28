@@ -1,0 +1,24 @@
+{
+  "openapi": "3.0.1",
+  "info": { "title": "No tags", "version": "1" },
+  "servers": [{ "url": "/api/v2" }],
+  "paths": {
+    "/health": { "get": { "responses": { "200": { "description": "ok" } } } },
+    "/items": {
+      "get": { "operationId": "listItems", "responses": { "200": { "description": "ok" } } },
+      "post": {
+        "summary": "Create item",
+        "deprecated": true,
+        "parameters": [
+          { "name": "X-Request-Id", "in": "header", "required": true, "schema": { "type": "string" }, "example": "req-1" },
+          { "name": "X-Trace", "in": "header", "schema": { "type": "string" } },
+          { "name": "Accept", "in": "header", "schema": { "type": "string" } },
+          { "name": "session", "in": "cookie", "schema": { "type": "string" }, "example": "s1" },
+          { "name": "theme", "in": "cookie", "schema": { "type": "string" } }
+        ],
+        "requestBody": { "content": { "application/json": { "schema": { "type": "object" } } } },
+        "responses": { "201": { "description": "created" } }
+      }
+    }
+  }
+}

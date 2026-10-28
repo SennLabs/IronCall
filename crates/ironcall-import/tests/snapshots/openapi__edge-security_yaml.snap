@@ -1,0 +1,187 @@
+---
+source: tests/openapi.rs
+expression: plan
+---
+{
+  "version": "openApi30",
+  "title": "Security schemes",
+  "description": null,
+  "servers": [
+    "https://secure.example.com"
+  ],
+  "environment": [
+    {
+      "name": "baseUrl",
+      "value": "https://secure.example.com",
+      "secret": false
+    },
+    {
+      "name": "token",
+      "value": "",
+      "secret": true
+    },
+    {
+      "name": "username",
+      "value": "",
+      "secret": false
+    },
+    {
+      "name": "password",
+      "value": "",
+      "secret": true
+    },
+    {
+      "name": "apiKey",
+      "value": "",
+      "secret": true
+    },
+    {
+      "name": "queryKey",
+      "value": "",
+      "secret": true
+    }
+  ],
+  "rootAuth": {
+    "type": "bearer",
+    "token": "{{token}}"
+  },
+  "authSummary": [
+    "bearerAuth → Bearer {{token}} on the collection",
+    "basicAuth → Basic auth ({{username}}, {{password}}) on the requests that use it",
+    "headerKey → API key header `X-API-Key: {{apiKey}}` on the requests that use it",
+    "queryKey → API key query `api_key={{queryKey}}` on the requests that use it",
+    "cookieKey → not mapped (API key in cookie `sid`)",
+    "oauth → Bearer {{token}} on the requests that use it (OAuth flows are post-V1)",
+    "digestAuth → not mapped (HTTP digest)"
+  ],
+  "tree": [
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000001",
+      "name": "Uses the global bearer",
+      "method": "GET",
+      "url": "{{baseUrl}}/global"
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000002",
+      "name": "No auth",
+      "method": "GET",
+      "url": "{{baseUrl}}/public",
+      "auth": {
+        "type": "none"
+      }
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000003",
+      "name": "Basic override",
+      "method": "GET",
+      "url": "{{baseUrl}}/basic",
+      "auth": {
+        "type": "basic",
+        "username": "{{username}}",
+        "password": "{{password}}"
+      }
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000004",
+      "name": "API key in header",
+      "method": "GET",
+      "url": "{{baseUrl}}/key-header",
+      "auth": {
+        "type": "apiKey",
+        "key": "X-API-Key",
+        "value": "{{apiKey}}",
+        "in": "header"
+      }
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000005",
+      "name": "API key in query",
+      "method": "GET",
+      "url": "{{baseUrl}}/key-query",
+      "auth": {
+        "type": "apiKey",
+        "key": "api_key",
+        "value": "{{queryKey}}",
+        "in": "query"
+      }
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000006",
+      "name": "API key in cookie",
+      "method": "GET",
+      "url": "{{baseUrl}}/key-cookie"
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000007",
+      "name": "OAuth2",
+      "method": "GET",
+      "url": "{{baseUrl}}/oauth",
+      "auth": {
+        "type": "bearer",
+        "token": "{{token}}"
+      }
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000008",
+      "name": "Either of two",
+      "method": "GET",
+      "url": "{{baseUrl}}/either",
+      "auth": {
+        "type": "apiKey",
+        "key": "X-API-Key",
+        "value": "{{apiKey}}",
+        "in": "header"
+      }
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000009",
+      "name": "Digest (unsupported)",
+      "method": "GET",
+      "url": "{{baseUrl}}/digest"
+    }
+  ],
+  "warnings": [
+    {
+      "message": "several security options are allowed here; only the first one is used",
+      "location": "#/paths/~1either/get"
+    },
+    {
+      "message": "security scheme `cookieKey` can't be mapped to an auth type",
+      "location": "#/paths/~1key-cookie/get"
+    },
+    {
+      "message": "security scheme `digestAuth` can't be mapped to an auth type",
+      "location": "#/paths/~1digest/get"
+    },
+    {
+      "message": "`cookieKey` sends an API key in cookie `sid`; add a `Cookie` header by hand",
+      "location": null
+    },
+    {
+      "message": "`oauth` is OAuth 2.0 / OpenID Connect: sent as a Bearer `{{token}}`; getting the token is up to you until OAuth support (post-V1)",
+      "location": null
+    },
+    {
+      "message": "`digestAuth` uses HTTP digest, which isn't supported yet",
+      "location": null
+    }
+  ]
+}

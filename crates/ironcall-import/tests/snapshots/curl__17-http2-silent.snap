@@ -1,0 +1,15 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "url": "https://api.example.com/status",
+    "settings": {
+      "httpVersion": "http2"
+    },
+    "name": "GET /status",
+    "method": "GET"
+  },
+  "warnings": []
+}

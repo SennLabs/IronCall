@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Swagger Petstore
+  license:
+    name: MIT
+    identifier: MIT
+servers:
+  - url: https://petstore.example.com/v1
+security:
+  - petstoreKey: []
+paths:
+  /pets:
+    get:
+      summary: List all pets
+      operationId: listPets
+      tags:
+        - pets
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: [integer, "null"]
+            maximum: 100
+            examples: [20]
+          example: 20
+      responses:
+        '200':
+          description: A paged array of pets
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pets"
+    post:
+      summary: Create a pet
+      operationId: createPets
+      tags:
+        - pets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+            examples:
+              doggie:
+                summary: A dog
+                value:
+                  id: 10
+                  name: doggie
+                  tag: dog
+      responses:
+        '201':
+          description: Null response
+  /pets/{petId}:
+    get:
+      summary: Info for a specific pet
+      operationId: showPetById
+      tags:
+        - pets
+      security: []
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          schema:
+            type: string
+            examples: ["42"]
+          example: "42"
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pet"
+webhooks:
+  newPet:
+    post:
+      requestBody:
+        description: Information about a new pet in the system
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Pet"
+      responses:
+        "200":
+          description: Return a 200 status to indicate that the data was received successfully
+components:
+  securitySchemes:
+    petstoreKey:
+      type: apiKey
+      in: header
+      name: X-Petstore-Key
+  schemas:
+    Pet:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        tag:
+          type: [string, "null"]
+    Pets:
+      type: array
+      maxItems: 100
+      items:
+        $ref: "#/components/schemas/Pet"

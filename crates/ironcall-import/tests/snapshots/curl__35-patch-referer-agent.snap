@@ -1,0 +1,33 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "User-Agent",
+        "value": "IronCallTest/1.0",
+        "enabled": true
+      },
+      {
+        "name": "Referer",
+        "value": "https://app.example.com/",
+        "enabled": true
+      },
+      {
+        "name": "Content-Type",
+        "value": "application/merge-patch+json",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "content": "{\"qty\":3}"
+    },
+    "name": "PATCH /items/42",
+    "method": "PATCH",
+    "url": "https://api.example.com/items/42"
+  },
+  "warnings": []
+}

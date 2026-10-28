@@ -1,0 +1,23 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "content-type",
+        "value": "application/json",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "content": "{\"name\":\"Ada\",\"note\":\"50% done\"}"
+    },
+    "name": "POST /api/v2/projects",
+    "method": "POST",
+    "url": "https://app.example.com/api/v2/projects"
+  },
+  "warnings": []
+}

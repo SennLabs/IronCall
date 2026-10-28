@@ -1,0 +1,24 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "url": "https://api.example.com/search",
+    "params": [
+      {
+        "name": "q",
+        "value": "rust lang",
+        "enabled": true
+      },
+      {
+        "name": "page",
+        "value": "2",
+        "enabled": true
+      }
+    ],
+    "name": "GET /search",
+    "method": "GET"
+  },
+  "warnings": []
+}

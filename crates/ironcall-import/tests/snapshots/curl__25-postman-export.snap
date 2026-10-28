@@ -1,0 +1,35 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "enabled": true
+      },
+      {
+        "name": "Authorization",
+        "value": "Bearer abc.def.ghi",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "content": "{\n    \"customer\": \"C-1001\",\n    \"items\": [\n        {\"sku\": \"XR-1\", \"qty\": 2}\n    ]\n}"
+    },
+    "name": "POST /v1/orders",
+    "method": "POST",
+    "url": "https://api.example.com/v1/orders",
+    "params": [
+      {
+        "name": "expand",
+        "value": "items",
+        "enabled": true
+      }
+    ]
+  },
+  "warnings": []
+}

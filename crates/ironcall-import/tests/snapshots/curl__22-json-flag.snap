@@ -1,0 +1,28 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "enabled": true
+      },
+      {
+        "name": "Accept",
+        "value": "application/json",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "content": "{\"query\":\"{ viewer { login } }\"}"
+    },
+    "name": "POST /graphql",
+    "method": "POST",
+    "url": "https://api.example.com/graphql"
+  },
+  "warnings": []
+}

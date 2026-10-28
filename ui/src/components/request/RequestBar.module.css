@@ -1,0 +1,50 @@
+.bar {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.method {
+  width: 110px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+/* Same colours as the tree's method badges. */
+.method[data-method="get"] {
+  color: var(--method-get);
+}
+.method[data-method="post"] {
+  color: var(--method-post);
+}
+.method[data-method="put"] {
+  color: var(--method-put);
+}
+.method[data-method="patch"] {
+  color: var(--method-patch);
+}
+.method[data-method="delete"] {
+  color: var(--method-delete);
+}
+.method[data-method="other"] {
+  color: var(--method-other);
+}
+
+/* Options use the normal text colour, not the selected method's. */
+.method option {
+  color: var(--text);
+}
+
+.urlWrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.url {
+  font-family: var(--font-mono);
+}
+
+.send {
+  min-width: 80px;
+}

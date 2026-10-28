@@ -1,0 +1,260 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.conflict,
+.banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: color-mix(in srgb, var(--warning) 15%, var(--bg));
+  border: 1px solid color-mix(in srgb, var(--warning) 40%, transparent);
+  border-radius: var(--radius);
+}
+
+.banner {
+  border-radius: 0;
+  border-width: 0 0 1px;
+}
+
+.banner .text {
+  flex: 1;
+}
+
+.manager {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-3);
+  min-height: 360px;
+}
+
+.envList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-right: 1px solid var(--border);
+  padding-right: var(--space-2);
+}
+
+.envItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  text-align: left;
+  border-color: transparent;
+  background: transparent;
+}
+
+.envItem[aria-selected="true"] {
+  background: var(--selection);
+}
+
+.envItem .envName {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.envTools {
+  display: flex;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+  padding-top: var(--space-2);
+  margin-top: auto;
+}
+
+.count {
+  font-size: 11px;
+  padding: 0 5px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--warning) 22%, transparent);
+  color: var(--warning);
+}
+
+.activeDot {
+  color: var(--success);
+  font-size: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.choice {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  padding: var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.choice[data-current] {
+  border-color: var(--accent);
+}
+
+.choice[data-disabled] {
+  opacity: 0.6;
+}
+
+.choice p {
+  margin: 2px 0 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.warningText {
+  color: var(--warning);
+}
+
+.errorText {
+  color: var(--danger);
+}
+
+.previewTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.previewTable td,
+.previewTable th {
+  text-align: left;
+  padding: 3px var(--space-2);
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+  word-break: break-all;
+}
+
+.previewTable th {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.previewUrl {
+  font-family: var(--font-mono);
+  word-break: break-all;
+  padding: var(--space-2);
+  background: var(--bg-subtle);
+  border-radius: var(--radius);
+}
+
+.sourceBadge {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  padding: 0 5px;
+  border-radius: 8px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.switcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.switcher select {
+  max-width: 200px;
+}
+
+.popover {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 30;
+  width: min(560px, 90vw);
+  max-height: 60vh;
+  overflow: auto;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.2);
+  padding: var(--space-2);
+}
+
+.popover h3 {
+  margin: 0 0 var(--space-2);
+  font-size: 13px;
+}
+
+.lookTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.lookTable td,
+.lookTable th {
+  text-align: left;
+  padding: 3px var(--space-1);
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.lookTable th {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.lookName {
+  font-family: var(--font-mono);
+  color: var(--var);
+}
+
+.lookValue {
+  font-family: var(--font-mono);
+  word-break: break-all;
+}
+
+.lookOverrides {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.missingTag {
+  color: var(--warning);
+  font-style: italic;
+}
+
+.eye {
+  padding: 2px 6px;
+}
+
+.overridden {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}

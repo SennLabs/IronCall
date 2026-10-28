@@ -1,0 +1,19 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "url": "http://example.com/path",
+    "params": [
+      {
+        "name": "x",
+        "value": "1",
+        "enabled": true
+      }
+    ],
+    "name": "GET /path",
+    "method": "GET"
+  },
+  "warnings": []
+}

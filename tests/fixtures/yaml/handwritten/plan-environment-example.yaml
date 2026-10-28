@@ -1,0 +1,8 @@
+# PLAN.md §4.2 example.
+schema: "ironcall/environment@1"
+id: "01J9Z3M0A1B2C3D4E5F6G7H8J9"
+name: "Dev"
+vars:
+  baseUrl: "https://dev.api.example.com"
+  apiKey:
+    secret: true          # value lives in the selected SecretStore, never in this file

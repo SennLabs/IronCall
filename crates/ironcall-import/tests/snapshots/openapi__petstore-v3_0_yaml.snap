@@ -1,0 +1,75 @@
+---
+source: tests/openapi.rs
+expression: plan
+---
+{
+  "version": "openApi30",
+  "title": "Swagger Petstore",
+  "description": null,
+  "servers": [
+    "http://petstore.swagger.io/v1"
+  ],
+  "environment": [
+    {
+      "name": "baseUrl",
+      "value": "http://petstore.swagger.io/v1",
+      "secret": false
+    }
+  ],
+  "rootAuth": null,
+  "authSummary": [],
+  "tree": [
+    {
+      "kind": "folder",
+      "name": "pets",
+      "description": null,
+      "items": [
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000001",
+          "name": "List all pets",
+          "description": "Operation `listPets`.",
+          "method": "GET",
+          "url": "{{baseUrl}}/pets",
+          "params": [
+            {
+              "name": "limit",
+              "value": "",
+              "enabled": false
+            }
+          ]
+        },
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000002",
+          "name": "Create a pet",
+          "description": "Operation `createPets`.\n\nThe spec has no example body; fill it in.",
+          "method": "POST",
+          "url": "{{baseUrl}}/pets",
+          "body": {
+            "type": "json",
+            "content": "{}"
+          }
+        },
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000003",
+          "name": "Info for a specific pet",
+          "description": "Operation `showPetById`.",
+          "method": "GET",
+          "url": "{{baseUrl}}/pets/:petId",
+          "pathParams": [
+            {
+              "name": "petId",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}

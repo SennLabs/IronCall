@@ -1,0 +1,10 @@
+schema: 'ironcall/request@1'
+id: '01J9Z3K7T2V8Q4M6N0P5R1S3WF'
+name: 'API key in query'
+method: 'GET'
+url: 'https://example.com/data'
+auth:
+  type: 'apiKey'
+  key: 'api_key'
+  value: '{{apiKey}}'
+  in: 'query'

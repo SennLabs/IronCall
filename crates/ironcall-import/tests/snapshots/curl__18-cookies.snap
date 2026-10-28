@@ -1,0 +1,19 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "url": "https://app.example.com/me",
+    "headers": [
+      {
+        "name": "Cookie",
+        "value": "session=abc; theme=dark; lang=en",
+        "enabled": true
+      }
+    ],
+    "name": "GET /me",
+    "method": "GET"
+  },
+  "warnings": []
+}

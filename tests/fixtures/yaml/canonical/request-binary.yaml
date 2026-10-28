@@ -1,0 +1,9 @@
+schema: 'ironcall/request@1'
+id: '01J9Z3K7T2V8Q4M6N0P5R1S3WK'
+name: 'Upload blob'
+method: 'PUT'
+url: 'https://example.com/blob'
+body:
+  type: 'binaryFile'
+  path: 'data/blob.bin'
+  contentType: 'application/octet-stream'

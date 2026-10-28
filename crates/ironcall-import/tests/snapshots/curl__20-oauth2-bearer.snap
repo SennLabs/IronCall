@@ -1,0 +1,16 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "url": "https://api.example.com/me",
+    "auth": {
+      "type": "bearer",
+      "token": "eyJhbGciOi.payload.sig"
+    },
+    "name": "GET /me",
+    "method": "GET"
+  },
+  "warnings": []
+}

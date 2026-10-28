@@ -1,0 +1,130 @@
+/* Design tokens (PLAN.md §3.3). Components use only these variables, never raw colours. */
+
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-subtle: #f5f6f8;
+  --bg-raised: #ffffff;
+  --border: #dde1e6;
+  /* Form controls and buttons: 3:1 against the backgrounds (WCAG 1.4.11). */
+  --border-strong: #868e96;
+  --text: #1b1f24;
+  --text-muted: #5b6470;
+  --accent: #b4532a;
+  --accent-text: #ffffff;
+  --success: #1a7f37;
+  --warning: #8f6000;
+  --danger: #cf222e;
+  --method-get: #1a7f37;
+  --method-post: #8f6000;
+  --method-put: #0969da;
+  --method-patch: #8250df;
+  --method-delete: #cf222e;
+  --method-other: #5b6470;
+  --selection: #fdf1ec;
+  /* {{variables}}: defined, helper, unresolved */
+  --var: #0969da;
+  --var-helper: #8250df;
+  --var-unresolved: #cf222e;
+  /* Syntax highlighting (CodeMirror) */
+  --syntax-string: #116329;
+  --syntax-number: #0550ae;
+  --syntax-keyword: #6639ba;
+  --syntax-property: #953800;
+  --syntax-comment: #5b6470;
+  /* Timing waterfall phases */
+  --timing-dns: #6e7bd9;
+  --timing-connect: #3a9fbf;
+  --timing-tls: #8a63c4;
+
+  --font-ui: system-ui, "Segoe UI", "Noto Sans", Ubuntu, sans-serif;
+  --font-mono: "Cascadia Code", "JetBrains Mono", "DejaVu Sans Mono", ui-monospace, monospace;
+  --font-size: 13px;
+  --radius: 4px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #16181c;
+    --bg-subtle: #1e2126;
+    --bg-raised: #23272d;
+    --border: #343a42;
+    --border-strong: #6e7681;
+    --text: #e6e8eb;
+    --text-muted: #9aa3ae;
+    --accent: #e0784a;
+    --accent-text: #16181c;
+    --success: #3fb950;
+    --warning: #d29922;
+    --danger: #ff6b61;
+    --method-get: #3fb950;
+    --method-post: #d29922;
+    --method-put: #58a6ff;
+    --method-patch: #bc8cff;
+    --method-delete: #ff6b61;
+    --method-other: #9aa3ae;
+    --selection: #30241e;
+    --var: #58a6ff;
+    --var-helper: #bc8cff;
+    --var-unresolved: #ff6b61;
+    --syntax-string: #7ee787;
+    --syntax-number: #79c0ff;
+    --syntax-keyword: #d2a8ff;
+    --syntax-property: #ffa657;
+    --syntax-comment: #9aa3ae;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #16181c;
+  --bg-subtle: #1e2126;
+  --bg-raised: #23272d;
+  --border: #343a42;
+  --border-strong: #6e7681;
+  --text: #e6e8eb;
+  --text-muted: #9aa3ae;
+  --accent: #e0784a;
+  --accent-text: #16181c;
+  --success: #3fb950;
+  --warning: #d29922;
+  --danger: #ff6b61;
+  --method-get: #3fb950;
+  --method-post: #d29922;
+  --method-put: #58a6ff;
+  --method-patch: #bc8cff;
+  --method-delete: #ff6b61;
+  --method-other: #9aa3ae;
+  --selection: #30241e;
+  --var: #58a6ff;
+  --var-helper: #bc8cff;
+  --var-unresolved: #ff6b61;
+  --syntax-string: #7ee787;
+  --syntax-number: #79c0ff;
+  --syntax-keyword: #d2a8ff;
+  --syntax-property: #ffa657;
+  --syntax-comment: #9aa3ae;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--font-size);
+}

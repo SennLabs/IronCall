@@ -1,0 +1,71 @@
+.scroller {
+  /* Fast text path: no ligatures or kerning in a monospace viewer. */
+  font-variant-ligatures: none;
+  font-kerning: none;
+  text-rendering: optimizeSpeed;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.window {
+  position: sticky;
+  top: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.rows {
+  will-change: transform;
+}
+
+.row {
+  display: flex;
+  height: 18px;
+  white-space: pre;
+  line-height: 18px;
+  /* Rows never affect each other's layout; keeps relayout per frame cheap. */
+  contain: layout style;
+}
+
+.highlight {
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.gutter {
+  flex: none;
+  width: 8ch;
+  padding-right: 1ch;
+  text-align: right;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+.text {
+  flex: none;
+}
+
+/* Hidden 100-character run used to measure the monospace character width. */
+.probe {
+  position: absolute;
+  visibility: hidden;
+  white-space: pre;
+  pointer-events: none;
+}
+
+.text {
+  box-sizing: content-box;
+}
+
+.placeholder {
+  flex: none;
+  width: 40ch;
+  max-width: 60%;
+  height: 8px;
+  margin-top: 5px;
+  border-radius: 4px;
+  background: var(--bg-subtle);
+}

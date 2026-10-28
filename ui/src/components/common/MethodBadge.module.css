@@ -1,0 +1,28 @@
+.badge {
+  display: inline-block;
+  min-width: 3.2em;
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  font-weight: 700;
+  color: var(--method-other);
+}
+
+.badge[data-method="get"] {
+  color: var(--method-get);
+}
+
+.badge[data-method="post"] {
+  color: var(--method-post);
+}
+
+.badge[data-method="put"] {
+  color: var(--method-put);
+}
+
+.badge[data-method="patch"] {
+  color: var(--method-patch);
+}
+
+.badge[data-method="delete"] {
+  color: var(--method-delete);
+}

@@ -1,0 +1,23 @@
+[package]
+name = "ironcall-import"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[dependencies]
+# openapi
+ironcall-core.workspace = true
+serde.workspace = true
+serde_json = { workspace = true, features = ["preserve_order"] }
+serde-saphyr.workspace = true
+thiserror.workspace = true
+# curl
+base64 = "0.22"
+
+[dev-dependencies]
+# openapi
+insta = { version = "1.49", features = ["json"] }
+
+[lints]
+workspace = true

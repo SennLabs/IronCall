@@ -1,0 +1,17 @@
+schema: 'ironcall/collection@1'
+id: '01J9Z3P0A1B2C3D4E5F6G7H8J9'
+name: 'My API'
+description: |
+  # My API
+
+  Requests for the **My API** service.
+vars:
+  baseUrl: 'https://api.example.com'
+headers:
+- {name: 'User-Agent', value: 'IronCall', enabled: true}
+auth:
+  type: 'bearer'
+  token: '{{token}}'
+order:
+- '01J9Z3Q0A1B2C3D4E5F6G7H8J9'
+- '01J9Z3K7T2V8Q4M6N0P5R1S3W9'

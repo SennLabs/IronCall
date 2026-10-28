@@ -1,0 +1,26 @@
+schema: 'ironcall/request@1'
+id: '01J9Z3K7T2V8Q4M6N0P5R1S3WD'
+name: 'Has future keys'
+method: 'GET'
+url: 'https://example.com'
+headers:
+- {name: 'Accept', value: '*/*', enabled: true, futureRowKey: 'kept', weight: 3}
+auth:
+  type: 'bearer'
+  token: '{{token}}'
+  futureAuthKey: true
+body:
+  type: 'json'
+  content: '{}'
+  futureBodyKey: 'kept'
+settings:
+  timeoutMs: 1000
+  futureSetting: 2.5
+futureTopLevel:
+  nested:
+  - 1
+  - 'two'
+  - null
+  deeper:
+    key: 'value'
+anotherFutureKey: 'kept'

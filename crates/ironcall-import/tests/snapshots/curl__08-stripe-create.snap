@@ -1,0 +1,32 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "sk_test_4eC39HqLyjWDarjtT1zdp7dc",
+      "password": ""
+    },
+    "body": {
+      "type": "formUrlencoded",
+      "fields": [
+        {
+          "name": "name",
+          "value": "Jenny Rosen",
+          "enabled": true
+        },
+        {
+          "name": "email",
+          "value": "jenny.rosen@example.com",
+          "enabled": true
+        }
+      ]
+    },
+    "name": "POST /v1/customers",
+    "method": "POST",
+    "url": "https://api.stripe.com/v1/customers"
+  },
+  "warnings": []
+}

@@ -1,0 +1,30 @@
+schema: 'ironcall/request@1'
+id: '01J9Z3K7T2V8Q4M6N0P5R1S3WC'
+name: 'no'
+method: 'GET'
+url: 'https://example.com/a?b=c&d=#frag'
+params:
+- {name: 'yes', value: 'no', enabled: true}
+- {name: 'on', value: 'off', enabled: false}
+- {name: 'version', value: '1.0', enabled: true}
+- {name: 'zip', value: '0123', enabled: true}
+- {name: 'nothing', value: 'null', enabled: true}
+- {name: 'tilde', value: '~', enabled: true}
+- {name: 'date', value: '2026-10-05', enabled: true}
+- {name: 'hex', value: '0x1F', enabled: true}
+- {name: 'exp', value: '1e3', enabled: true}
+- {name: 'empty', value: '', enabled: true}
+- {name: 'colon', value: 'a: b', enabled: true}
+- {name: 'hash', value: '#not a comment', enabled: true}
+- {name: 'dash', value: '- item', enabled: true}
+- {name: 'braces', value: '{not: flow}', enabled: true}
+- {name: 'quote', value: "it's", enabled: true}
+- {name: 'tab', value: "a\tb", enabled: true}
+- {name: 'newline', value: "line1\nline2", enabled: true}
+- {name: 'spaces', value: '  padded  ', enabled: true}
+- {name: 'template', value: '{{var}}', enabled: true}
+vars:
+  bool: 'true'
+  number: '8080'
+  float: '1.50'
+  octal: '0o17'

@@ -1,0 +1,12 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "method": "HEAD",
+    "url": "https://example.com/",
+    "name": "HEAD /"
+  },
+  "warnings": []
+}

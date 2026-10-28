@@ -1,0 +1,167 @@
+.waterfall {
+  padding: var(--space-3);
+  overflow: auto;
+  height: 100%;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  color: var(--text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.caption {
+  text-align: left;
+  color: var(--text-muted);
+  padding-bottom: var(--space-2);
+}
+
+.label {
+  text-align: left;
+  font-weight: normal;
+  white-space: nowrap;
+  padding: var(--space-1) var(--space-2) var(--space-1) 0;
+  width: 1%;
+  vertical-align: top;
+}
+
+.track {
+  width: 100%;
+  padding: var(--space-1) 0;
+}
+
+.total {
+  white-space: nowrap;
+  text-align: right;
+  padding-left: var(--space-2);
+  vertical-align: top;
+  font-variant-numeric: tabular-nums;
+}
+
+.lane {
+  position: relative;
+  height: 14px;
+  background: var(--bg-subtle);
+  border-radius: 3px;
+}
+
+.tick {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.bar {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  border-radius: 2px;
+}
+
+.bar[data-phase="dns"],
+.swatch[data-phase="dns"] {
+  background: var(--timing-dns);
+}
+.bar[data-phase="connect"],
+.swatch[data-phase="connect"] {
+  background: var(--timing-connect);
+}
+.bar[data-phase="tls"],
+.swatch[data-phase="tls"] {
+  background: var(--timing-tls);
+}
+.bar[data-phase="ttfb"],
+.swatch[data-phase="ttfb"] {
+  background: var(--accent);
+}
+.bar[data-phase="download"],
+.swatch[data-phase="download"] {
+  background: var(--success);
+}
+
+.marker {
+  position: absolute;
+  top: -3px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  line-height: 1;
+  padding: 1px 3px;
+  border-radius: 3px;
+  background: var(--warning);
+  color: var(--bg);
+}
+
+.phases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.phases span[data-state="reused"],
+.phases span[data-state="notApplicable"] {
+  font-style: italic;
+}
+
+.axis {
+  position: relative;
+  height: 16px;
+  margin-left: 25%;
+  color: var(--text-muted);
+  font-size: 10px;
+  display: none;
+}
+
+.axisLabel {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.status {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 0 var(--space-1);
+  border-radius: var(--radius);
+}
+
+.status[data-class="success"] {
+  color: var(--success);
+}
+.status[data-class="redirect"],
+.status[data-class="info"] {
+  color: var(--warning);
+}
+.status[data-class="client"],
+.status[data-class="server"] {
+  color: var(--danger);
+}
+
+.informational {
+  margin: var(--space-3) 0 0;
+  padding-left: var(--space-4);
+}
+
+.note {
+  color: var(--text-muted);
+  margin: var(--space-1) 0 0;
+}

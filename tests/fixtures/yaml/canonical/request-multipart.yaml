@@ -1,0 +1,23 @@
+schema: 'ironcall/request@1'
+id: '01J9Z3K7T2V8Q4M6N0P5R1S3WJ'
+name: 'Upload avatar'
+method: 'POST'
+url: 'https://example.com/avatar'
+body:
+  type: 'multipart'
+  parts:
+  - name: 'caption'
+    type: 'text'
+    value: 'Me at the beach'
+    enabled: true
+  - name: 'notes'
+    type: 'text'
+    value: |
+      Line one
+      Line two
+    enabled: true
+  - name: 'file'
+    type: 'file'
+    path: 'fixtures/avatar.png'
+    contentType: 'image/png'
+    enabled: true

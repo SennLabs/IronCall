@@ -1,0 +1,29 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "url": "https://api.github.com/repos/OWNER/REPO/issues",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/vnd.github+json",
+        "enabled": true
+      },
+      {
+        "name": "Authorization",
+        "value": "Bearer <YOUR-TOKEN>",
+        "enabled": true
+      },
+      {
+        "name": "X-GitHub-Api-Version",
+        "value": "2022-11-28",
+        "enabled": true
+      }
+    ],
+    "name": "GET /repos/OWNER/REPO/issues",
+    "method": "GET"
+  },
+  "warnings": []
+}

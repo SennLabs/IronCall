@@ -1,0 +1,116 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  background: var(--bg-subtle);
+  border-right: 1px solid var(--border);
+}
+
+.header {
+  display: flex;
+  gap: var(--space-1);
+  padding: var(--space-2);
+}
+
+.filter {
+  flex: 1;
+  min-width: 0;
+}
+
+.noWorkspace {
+  flex: 1;
+  padding: var(--space-3);
+}
+
+.noWorkspace p {
+  margin: 0 0 var(--space-2);
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.scratch {
+  border-top: 1px solid var(--border);
+  max-height: 35%;
+  overflow: auto;
+  flex: none;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-transform: uppercase;
+  font-size: 0.82em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  padding: var(--space-2);
+}
+
+.count {
+  margin-left: auto;
+  font-weight: 400;
+}
+
+.scratchList {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 var(--space-2);
+}
+
+.scratchItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 2px var(--space-2) 2px var(--space-4);
+}
+
+.scratchItem:hover {
+  background: var(--bg);
+}
+
+.active {
+  background: var(--selection);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.scratchName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.newScratch {
+  margin-left: var(--space-3);
+  font-size: 0.9em;
+}
+
+.twisty {
+  width: 1em;
+  flex: none;
+  color: var(--text-muted);
+}
+
+.dropInside {
+  background: var(--selection);
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+}

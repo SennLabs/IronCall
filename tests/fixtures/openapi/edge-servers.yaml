@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: Server variables
+  version: "1"
+servers:
+  - url: https://{region}.api.example.com:{port}/{basePath}/
+    variables:
+      region:
+        default: eu-west
+        enum: [eu-west, us-east]
+      port:
+        default: "8443"
+      basePath:
+        default: v3
+  - url: https://staging.example.com/v3
+paths:
+  /ping:
+    get:
+      summary: Ping
+      responses:
+        "200": { description: pong }

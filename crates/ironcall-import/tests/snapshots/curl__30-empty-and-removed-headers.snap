@@ -1,0 +1,21 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "url": "https://api.example.com/",
+    "headers": [
+      {
+        "name": "X-Empty",
+        "value": "",
+        "enabled": true
+      }
+    ],
+    "name": "GET /",
+    "method": "GET"
+  },
+  "warnings": [
+    "`Accept:` removes one of curl's own headers; ignored"
+  ]
+}

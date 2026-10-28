@@ -1,0 +1,79 @@
+---
+source: tests/openapi.rs
+expression: plan
+---
+{
+  "version": "openApi30",
+  "title": "No tags",
+  "description": null,
+  "servers": [
+    "/api/v2"
+  ],
+  "environment": [
+    {
+      "name": "baseUrl",
+      "value": "/api/v2",
+      "secret": false
+    }
+  ],
+  "rootAuth": null,
+  "authSummary": [],
+  "tree": [
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000001",
+      "name": "GET /health",
+      "method": "GET",
+      "url": "{{baseUrl}}/health"
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000002",
+      "name": "listItems",
+      "method": "GET",
+      "url": "{{baseUrl}}/items"
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000003",
+      "name": "Create item",
+      "description": "**Deprecated.**\n\nThe spec has no example body; fill it in.",
+      "method": "POST",
+      "url": "{{baseUrl}}/items",
+      "headers": [
+        {
+          "name": "X-Request-Id",
+          "value": "req-1",
+          "enabled": true
+        },
+        {
+          "name": "X-Trace",
+          "value": "",
+          "enabled": false
+        },
+        {
+          "name": "Cookie",
+          "value": "session=s1; theme=",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "json",
+        "content": "{}"
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "message": "cookie parameters were combined into a `Cookie` header",
+      "location": "POST /items"
+    },
+    {
+      "message": "the server URL `/api/v2` is relative; set `baseUrl` to the full URL",
+      "location": "#/servers"
+    }
+  ]
+}

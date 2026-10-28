@@ -1,0 +1,40 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "X-Name",
+        "value": "Zoë",
+        "enabled": true
+      },
+      {
+        "name": "Content-Type",
+        "value": "application/json; charset=utf-8",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "content": "{\"msg\":\"héllo ✓\"}"
+    },
+    "name": "POST /検索",
+    "method": "POST",
+    "url": "https://api.example.jp/検索",
+    "params": [
+      {
+        "name": "q",
+        "value": "日本語",
+        "enabled": true
+      },
+      {
+        "name": "name",
+        "value": "Zoë",
+        "enabled": true
+      }
+    ]
+  },
+  "warnings": []
+}

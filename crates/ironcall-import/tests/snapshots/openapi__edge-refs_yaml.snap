@@ -1,0 +1,94 @@
+---
+source: tests/openapi.rs
+expression: plan
+---
+{
+  "version": "openApi30",
+  "title": "Refs edge cases",
+  "description": null,
+  "servers": [
+    "https://api.example.com"
+  ],
+  "environment": [
+    {
+      "name": "baseUrl",
+      "value": "https://api.example.com",
+      "secret": false
+    }
+  ],
+  "rootAuth": null,
+  "authSummary": [],
+  "tree": [
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000001",
+      "name": "Path item via ref, parameter via a ref chain",
+      "method": "GET",
+      "url": "{{baseUrl}}/chained/:id",
+      "pathParams": [
+        {
+          "name": "id",
+          "value": "abc-123"
+        }
+      ]
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000002",
+      "name": "Parameter ref cycle",
+      "method": "GET",
+      "url": "{{baseUrl}}/cycle",
+      "params": [
+        {
+          "name": "limit",
+          "value": "25",
+          "enabled": false
+        }
+      ]
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000003",
+      "name": "External body ref",
+      "method": "POST",
+      "url": "{{baseUrl}}/external"
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000004",
+      "name": "Broken ref",
+      "method": "GET",
+      "url": "{{baseUrl}}/broken"
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000005",
+      "name": "Recursive schema",
+      "method": "POST",
+      "url": "{{baseUrl}}/recursive",
+      "body": {
+        "type": "json",
+        "content": "{\n  \"name\": \"root\",\n  \"children\": [\n    {\n      \"name\": \"leaf\",\n      \"children\": []\n    }\n  ]\n}"
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "message": "`$ref` cycle through `#/components/parameters/LoopA`; ignored",
+      "location": "#/components/parameters/LoopA"
+    },
+    {
+      "message": "external `$ref` to `./shared.yaml#/components/requestBodies/Thing` isn't followed; import that file separately",
+      "location": "./shared.yaml#/components/requestBodies/Thing"
+    },
+    {
+      "message": "`$ref` to `#/components/parameters/DoesNotExist` doesn't point to anything",
+      "location": "#/components/parameters/DoesNotExist"
+    }
+  ]
+}

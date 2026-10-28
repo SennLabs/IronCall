@@ -1,0 +1,5 @@
+schema: "ironcall/request@1"
+id: "not-a-ulid"
+name: "Bad id"
+method: "GET"
+url: "https://example.com"

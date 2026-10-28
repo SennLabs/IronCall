@@ -1,0 +1,11 @@
+curl 'https://app.example.com/api/v2/projects?page=2&per_page=50' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'accept-language: en-AU,en;q=0.9' \
+  -b 'session=4f2a9c; theme=dark' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://app.example.com/projects' \
+  -H 'sec-ch-ua: "Chromium";v="141", "Not?A_Brand";v="8"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36' \
+  --compressed

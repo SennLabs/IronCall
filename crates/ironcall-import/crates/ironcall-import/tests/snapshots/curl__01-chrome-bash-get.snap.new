@@ -1,0 +1,72 @@
+---
+source: "../../../../../crates/ironcall-import/tests/curl.rs"
+assertion_line: 45
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "params": [
+      {
+        "name": "page",
+        "value": "2",
+        "enabled": true
+      },
+      {
+        "name": "per_page",
+        "value": "50",
+        "enabled": true
+      }
+    ],
+    "headers": [
+      {
+        "name": "accept",
+        "value": "application/json, text/plain, */*",
+        "enabled": true
+      },
+      {
+        "name": "accept-language",
+        "value": "en-AU,en;q=0.9",
+        "enabled": true
+      },
+      {
+        "name": "priority",
+        "value": "u=1, i",
+        "enabled": true
+      },
+      {
+        "name": "referer",
+        "value": "https://app.example.com/projects",
+        "enabled": true
+      },
+      {
+        "name": "sec-ch-ua",
+        "value": "\"Chromium\";v=\"141\", \"Not?A_Brand\";v=\"8\"",
+        "enabled": true
+      },
+      {
+        "name": "sec-ch-ua-mobile",
+        "value": "?0",
+        "enabled": true
+      },
+      {
+        "name": "sec-fetch-mode",
+        "value": "cors",
+        "enabled": true
+      },
+      {
+        "name": "user-agent",
+        "value": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+        "enabled": true
+      },
+      {
+        "name": "Cookie",
+        "value": "session=4f2a9c; theme=dark",
+        "enabled": true
+      }
+    ],
+    "name": "GET /api/v2/projects",
+    "method": "GET",
+    "url": "https://app.example.com/api/v2/projects"
+  },
+  "warnings": []
+}

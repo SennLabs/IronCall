@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: Security schemes
+  version: "1"
+servers:
+  - url: https://secure.example.com
+security:
+  - bearerAuth: []
+paths:
+  /global:
+    get:
+      summary: Uses the global bearer
+      responses: { "200": { description: ok } }
+  /public:
+    get:
+      summary: No auth
+      security: []
+      responses: { "200": { description: ok } }
+  /basic:
+    get:
+      summary: Basic override
+      security: [{ basicAuth: [] }]
+      responses: { "200": { description: ok } }
+  /key-header:
+    get:
+      summary: API key in header
+      security: [{ headerKey: [] }]
+      responses: { "200": { description: ok } }
+  /key-query:
+    get:
+      summary: API key in query
+      security: [{ queryKey: [] }]
+      responses: { "200": { description: ok } }
+  /key-cookie:
+    get:
+      summary: API key in cookie
+      security: [{ cookieKey: [] }]
+      responses: { "200": { description: ok } }
+  /oauth:
+    get:
+      summary: OAuth2
+      security: [{ oauth: [read] }]
+      responses: { "200": { description: ok } }
+  /either:
+    get:
+      summary: Either of two
+      security: [{ headerKey: [] }, { basicAuth: [] }]
+      responses: { "200": { description: ok } }
+  /digest:
+    get:
+      summary: Digest (unsupported)
+      security: [{ digestAuth: [] }]
+      responses: { "200": { description: ok } }
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer, bearerFormat: JWT }
+    basicAuth: { type: http, scheme: basic }
+    headerKey: { type: apiKey, in: header, name: X-API-Key }
+    queryKey: { type: apiKey, in: query, name: api_key }
+    cookieKey: { type: apiKey, in: cookie, name: sid }
+    oauth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://secure.example.com/oauth/token
+          scopes: { read: Read access }
+    digestAuth: { type: http, scheme: digest }

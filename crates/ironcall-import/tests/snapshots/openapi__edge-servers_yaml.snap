@@ -1,0 +1,48 @@
+---
+source: tests/openapi.rs
+expression: plan
+---
+{
+  "version": "openApi30",
+  "title": "Server variables",
+  "description": null,
+  "servers": [
+    "https://eu-west.api.example.com:8443/v3",
+    "https://staging.example.com/v3"
+  ],
+  "environment": [
+    {
+      "name": "baseUrl",
+      "value": "https://eu-west.api.example.com:8443/v3",
+      "secret": false
+    },
+    {
+      "name": "region",
+      "value": "eu-west",
+      "secret": false
+    },
+    {
+      "name": "port",
+      "value": "8443",
+      "secret": false
+    },
+    {
+      "name": "basePath",
+      "value": "v3",
+      "secret": false
+    }
+  ],
+  "rootAuth": null,
+  "authSummary": [],
+  "tree": [
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000001",
+      "name": "Ping",
+      "method": "GET",
+      "url": "{{baseUrl}}/ping"
+    }
+  ],
+  "warnings": []
+}

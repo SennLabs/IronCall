@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "IronCall",
+  "version": "1.0.0",
+  "identifier": "io.ironcall.desktop",
+  "build": {
+    "beforeDevCommand": "npm --prefix ../ui run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm --prefix ../ui run build",
+    "frontendDist": "../ui/dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "IronCall",
+        "create": false,
+        "width": 1280,
+        "height": 800,
+        "minWidth": 800,
+        "minHeight": 500
+      }
+    ],
+    "security": {
+      "csp": {
+        "default-src": "'self'",
+        "script-src": "'self'",
+        "style-src": "'self' 'unsafe-inline'",
+        "img-src": "'self' data: ironcall: http://ironcall.localhost",
+        "connect-src": "ipc: http://ipc.localhost ironcall: http://ironcall.localhost",
+        "worker-src": "'self' blob:",
+        "object-src": "'none'",
+        "form-action": "'none'",
+        "base-uri": "'none'",
+        "frame-src": "ironcall-preview: http://ironcall-preview.localhost"
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "msi", "appimage", "deb"],
+    "publisher": "IronCall",
+    "category": "DeveloperTool",
+    "shortDescription": "Local-first REST API client",
+    "windows": {
+      "webviewInstallMode": { "type": "downloadBootstrapper", "silent": true }
+    },
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.ico",
+      "icons/icon.png"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+.split {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+}
+
+.pane {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  flex-grow: 0;
+  flex-shrink: 1;
+}
+
+.divider {
+  flex: none;
+  height: 5px;
+  cursor: row-resize;
+  background: var(--border);
+  background-clip: content-box;
+  padding: 2px 0;
+}
+
+.divider.vertical {
+  height: auto;
+  width: 5px;
+  cursor: col-resize;
+  padding: 0 2px;
+}
+
+.divider:hover,
+.divider:focus-visible {
+  background: var(--accent);
+  background-clip: content-box;
+  outline: none;
+}

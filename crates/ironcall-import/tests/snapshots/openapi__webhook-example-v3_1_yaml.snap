@@ -1,0 +1,34 @@
+---
+source: tests/openapi.rs
+expression: plan
+---
+{
+  "version": "openApi31",
+  "title": "Webhook Example",
+  "description": null,
+  "servers": [],
+  "environment": [
+    {
+      "name": "baseUrl",
+      "value": "",
+      "secret": false
+    }
+  ],
+  "rootAuth": null,
+  "authSummary": [],
+  "tree": [],
+  "warnings": [
+    {
+      "message": "the spec has no `paths`",
+      "location": "#/paths"
+    },
+    {
+      "message": "webhooks aren't imported (they're requests the API sends, not ones you send)",
+      "location": "#/webhooks"
+    },
+    {
+      "message": "the spec lists no servers; set `baseUrl` in the environment",
+      "location": "#/servers"
+    }
+  ]
+}

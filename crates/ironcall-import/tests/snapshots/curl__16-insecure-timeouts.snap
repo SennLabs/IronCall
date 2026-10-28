@@ -1,0 +1,18 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "url": "https://self-signed.local:8443/health",
+    "settings": {
+      "timeoutMs": 2500,
+      "maxRedirects": 5,
+      "verifyTls": false,
+      "httpVersion": "http1"
+    },
+    "name": "GET /health",
+    "method": "GET"
+  },
+  "warnings": []
+}

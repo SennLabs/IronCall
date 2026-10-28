@@ -1,0 +1,169 @@
+.wrap {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Text is drawn by the mirror; the input keeps the caret and selection.
+   Two classes so this beats the base input styles and table cell styles. */
+.wrap .overlay {
+  color: transparent;
+  caret-color: var(--text);
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.wrap .overlay::placeholder {
+  color: var(--text-muted);
+}
+
+.wrap .overlay::selection {
+  color: transparent;
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.mirror {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  white-space: pre;
+  pointer-events: none;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  /* Padding and font are copied from the input on mount. */
+  display: flex;
+  align-items: center;
+}
+
+.mirror > span {
+  flex: none;
+}
+
+.ref {
+  border-radius: 3px;
+  color: var(--var);
+  background: color-mix(in srgb, var(--var) 14%, transparent);
+}
+
+.ref[data-state="helper"] {
+  color: var(--var-helper);
+  background: color-mix(in srgb, var(--var-helper) 14%, transparent);
+}
+
+.ref[data-state="unresolved"] {
+  color: var(--var-unresolved);
+  background: color-mix(in srgb, var(--var-unresolved) 14%, transparent);
+  text-decoration: underline wavy var(--var-unresolved);
+}
+
+.ref[data-state="missing"] {
+  color: var(--warning);
+  background: color-mix(in srgb, var(--warning) 16%, transparent);
+}
+
+.ref[data-state="unknown"] {
+  color: var(--text-muted);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  z-index: 20;
+  min-width: 320px;
+  max-width: 560px;
+  max-height: 280px;
+  overflow: auto;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.18);
+  padding: 2px;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: minmax(80px, auto) 1fr auto;
+  gap: var(--space-2);
+  align-items: baseline;
+  padding: 3px var(--space-2);
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.active,
+.option:hover {
+  background: var(--selection);
+}
+
+.optName {
+  font-family: var(--font-mono);
+  color: var(--var);
+}
+
+.optName[data-helper] {
+  color: var(--var-helper);
+}
+
+.optDetail {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.optSource {
+  color: var(--text-muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.tooltip {
+  position: absolute;
+  top: calc(100% + 4px);
+  z-index: 21;
+  pointer-events: none;
+}
+
+.tip {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.18);
+  padding: var(--space-2);
+  max-width: 420px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tipTitle {
+  font-family: var(--font-mono);
+  color: var(--var);
+  font-weight: 600;
+}
+
+.tipValue {
+  font-family: var(--font-mono);
+  word-break: break-all;
+}
+
+.tipSource {
+  color: var(--text-muted);
+}
+
+.tipProblem {
+  color: var(--var-unresolved);
+}

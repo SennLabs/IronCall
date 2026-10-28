@@ -1,0 +1,40 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/vnd.github+json",
+        "enabled": true
+      },
+      {
+        "name": "Authorization",
+        "value": "Bearer <YOUR-TOKEN>",
+        "enabled": true
+      },
+      {
+        "name": "X-GitHub-Api-Version",
+        "value": "2022-11-28",
+        "enabled": true
+      },
+      {
+        "name": "Content-Type",
+        "value": "application/x-www-form-urlencoded",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "text",
+      "content": "{\"title\":\"Found a bug\",\"body\":\"I'm having a problem with this.\",\"labels\":[\"bug\"]}"
+    },
+    "name": "POST /repos/OWNER/REPO/issues",
+    "method": "POST",
+    "url": "https://api.github.com/repos/OWNER/REPO/issues"
+  },
+  "warnings": [
+    "no Content-Type was given, so curl sends this body as application/x-www-form-urlencoded; kept as is"
+  ]
+}

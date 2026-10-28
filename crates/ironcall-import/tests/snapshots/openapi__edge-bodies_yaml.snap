@@ -1,0 +1,210 @@
+---
+source: tests/openapi.rs
+expression: plan
+---
+{
+  "version": "openApi30",
+  "title": "Bodies",
+  "description": null,
+  "servers": [
+    "https://bodies.example.com"
+  ],
+  "environment": [
+    {
+      "name": "baseUrl",
+      "value": "https://bodies.example.com",
+      "secret": false
+    }
+  ],
+  "rootAuth": null,
+  "authSummary": [],
+  "tree": [
+    {
+      "kind": "folder",
+      "name": "forms",
+      "description": "Form and multipart bodies",
+      "items": [
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000001",
+          "name": "Form login",
+          "method": "POST",
+          "url": "{{baseUrl}}/login",
+          "body": {
+            "type": "formUrlencoded",
+            "fields": [
+              {
+                "name": "username",
+                "value": "ada",
+                "enabled": true
+              },
+              {
+                "name": "password",
+                "value": "",
+                "enabled": true
+              },
+              {
+                "name": "remember",
+                "value": "true",
+                "enabled": true
+              }
+            ]
+          }
+        },
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000002",
+          "name": "Upload avatar",
+          "method": "POST",
+          "url": "{{baseUrl}}/upload",
+          "body": {
+            "type": "multipart",
+            "parts": [
+              {
+                "name": "caption",
+                "type": "text",
+                "value": "Me at the beach",
+                "enabled": true
+              },
+              {
+                "name": "file",
+                "type": "file",
+                "enabled": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "kind": "folder",
+      "name": "json",
+      "description": "JSON bodies",
+      "items": [
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000003",
+          "name": "Media example",
+          "method": "POST",
+          "url": "{{baseUrl}}/example",
+          "body": {
+            "type": "json",
+            "content": "{\n  \"a\": 1,\n  \"nested\": {\n    \"b\": [\n      true,\n      null\n    ]\n  }\n}"
+          }
+        },
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000004",
+          "name": "Named examples (first wins)",
+          "method": "POST",
+          "url": "{{baseUrl}}/examples",
+          "body": {
+            "type": "json",
+            "content": "{\n  \"pick\": \"me\"\n}"
+          }
+        },
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000005",
+          "name": "Schema-level example",
+          "method": "POST",
+          "url": "{{baseUrl}}/schema-example",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/vnd.api+json",
+              "enabled": true
+            }
+          ],
+          "body": {
+            "type": "json",
+            "content": "{\n  \"data\": {\n    \"type\": \"users\"\n  }\n}"
+          }
+        },
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000006",
+          "name": "External example value",
+          "description": "The spec has no example body; fill it in.",
+          "method": "POST",
+          "url": "{{baseUrl}}/external-example",
+          "body": {
+            "type": "json",
+            "content": "{}"
+          }
+        },
+        {
+          "kind": "request",
+          "schema": "ironcall/request@1",
+          "id": "01J00000000000000000000007",
+          "name": "JSON preferred over XML",
+          "method": "PUT",
+          "url": "{{baseUrl}}/prefer-json",
+          "body": {
+            "type": "json",
+            "content": "{\n  \"pet\": true\n}"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000008",
+      "name": "XML only",
+      "method": "PUT",
+      "url": "{{baseUrl}}/xml",
+      "body": {
+        "type": "xml",
+        "content": "<pet><name>Rex</name></pet>"
+      }
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000009",
+      "name": "Plain text",
+      "method": "PUT",
+      "url": "{{baseUrl}}/text",
+      "body": {
+        "type": "text",
+        "content": "hello"
+      }
+    },
+    {
+      "kind": "request",
+      "schema": "ironcall/request@1",
+      "id": "01J00000000000000000000010",
+      "name": "Octet stream",
+      "method": "PUT",
+      "url": "{{baseUrl}}/binary",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/octet-stream",
+          "enabled": true
+        }
+      ],
+      "body": {
+        "type": "text",
+        "content": ""
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "message": "example uses `externalValue`, which isn't fetched",
+      "location": "#/paths/~1external-example/post"
+    },
+    {
+      "message": "`application/octet-stream` bodies are imported as text; switch to a binary file body if needed",
+      "location": "PUT /binary"
+    }
+  ]
+}

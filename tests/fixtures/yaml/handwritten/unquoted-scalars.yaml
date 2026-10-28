@@ -1,0 +1,19 @@
+# Hand-edited file with unquoted values that YAML would type as bool/number/date.
+schema: ironcall/request@1
+id: 01J9Z3K7T2V8Q4M6N0P5R1S3W8
+name: no
+method: GET
+url: https://example.com/items/0123
+params:
+  - name: version
+    value: 1.0
+  - name: flag
+    value: yes
+  - name: since
+    value: 2026-10-05
+  - name: zip
+    value: 0123
+vars:
+  port: 8080
+  debug: true
+  ratio: 1.50

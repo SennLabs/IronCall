@@ -1,0 +1,36 @@
+# Environment/secrets
+.env
+!.env.example
+*.pem
+*.key
+*.crt
+
+
+# Rust
+/target
+**/target/
+**/*.rs.bk
+Cargo.lock.orig
+
+
+# Editor / IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.claude/*
+.devcontainer/*
+
+
+# Frontend
+node_modules/
+ui/dist/
+*.tsbuildinfo
+
+# Test / build output
+/tests/e2e/screenshots/
+__pycache__/
+*.log
+
+# Core dumps from crashed processes (never commit)
+core
+core.[0-9]*

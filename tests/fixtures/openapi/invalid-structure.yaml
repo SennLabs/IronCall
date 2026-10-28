@@ -1,0 +1,21 @@
+openapi: 3.0.0
+info:
+  title: Odd but parseable
+  version: 1
+paths:
+  /ok:
+    get:
+      summary: Fine
+      responses: { "200": { description: ok } }
+  /not-an-operation:
+    get: "just a string"
+  /weird-method:
+    fetch:
+      summary: Not an HTTP method we know
+    post:
+      summary: Missing responses is tolerated
+      parameters:
+        - in: query
+        - name: no-location
+        - name: bad-in
+          in: body

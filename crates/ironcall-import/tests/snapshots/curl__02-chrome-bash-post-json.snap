@@ -1,0 +1,33 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "accept",
+        "value": "application/json",
+        "enabled": true
+      },
+      {
+        "name": "content-type",
+        "value": "application/json",
+        "enabled": true
+      },
+      {
+        "name": "origin",
+        "value": "https://app.example.com",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "content": "{\"name\":\"Radiology worklist\",\"tags\":[\"mri\",\"ct\"],\"active\":true}"
+    },
+    "name": "POST /api/v2/projects",
+    "method": "POST",
+    "url": "https://app.example.com/api/v2/projects"
+  },
+  "warnings": []
+}

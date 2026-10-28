@@ -1,0 +1,9 @@
+schema: 'ironcall/request@1'
+id: '01J9Z3K7T2V8Q4M6N0P5R1S3WE'
+name: 'Basic auth'
+method: 'GET'
+url: 'https://example.com/me'
+auth:
+  type: 'basic'
+  username: '{{user}}'
+  password: '{{password}}'

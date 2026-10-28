@@ -1,0 +1,40 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "x-amz-date",
+        "value": "20261005T010203Z",
+        "enabled": true
+      },
+      {
+        "name": "x-amz-content-sha256",
+        "value": "UNSIGNED-PAYLOAD",
+        "enabled": true
+      },
+      {
+        "name": "Authorization",
+        "value": "AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20261005/ap-southeast-2/s3/aws4_request, SignedHeaders=host;x-amz-date, Signature=abc123",
+        "enabled": true
+      },
+      {
+        "name": "Content-Type",
+        "value": "image/jpeg",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "binaryFile",
+      "path": "photo.jpg"
+    },
+    "name": "PUT /scans/photo.jpg",
+    "method": "PUT",
+    "url": "https://my-bucket.s3.ap-southeast-2.amazonaws.com/scans/photo.jpg"
+  },
+  "warnings": [
+    "`photo.jpg` doesn't exist relative to the current folder; pick it again in the body editor"
+  ]
+}

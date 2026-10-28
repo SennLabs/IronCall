@@ -1,0 +1,32 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "body": {
+      "type": "formUrlencoded",
+      "fields": [
+        {
+          "name": "name",
+          "value": "widget",
+          "enabled": true
+        }
+      ]
+    },
+    "settings": {
+      "verifyTls": false
+    },
+    "name": "POST /items",
+    "method": "POST",
+    "url": "https://api.example.com/items",
+    "headers": [
+      {
+        "name": "Accept",
+        "value": "application/json",
+        "enabled": true
+      }
+    ]
+  },
+  "warnings": []
+}

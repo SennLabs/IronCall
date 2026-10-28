@@ -1,0 +1,35 @@
+---
+source: crates/ironcall-import/tests/curl.rs
+expression: snapshot_value(&parsed)
+---
+{
+  "request": {
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json",
+        "enabled": true
+      },
+      {
+        "name": "X-Request-Id",
+        "value": "8f14e45f",
+        "enabled": true
+      }
+    ],
+    "body": {
+      "type": "json",
+      "content": "{\"given\":\"Ada\",\"family\":\"Lovelace\"}"
+    },
+    "name": "POST /v1/patients",
+    "method": "POST",
+    "url": "https://api.example.com/v1/patients",
+    "params": [
+      {
+        "name": "site",
+        "value": "perth",
+        "enabled": true
+      }
+    ]
+  },
+  "warnings": []
+}

@@ -1,0 +1,123 @@
+.scroller {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  outline: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding-right: var(--space-2);
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+
+.row:hover {
+  background: var(--bg-subtle);
+}
+
+.selected,
+.selected:hover {
+  background: var(--selection);
+  /* The background alone is subtle; the bar makes the selection visible at a glance. */
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.collection {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.twisty {
+  width: 12px;
+  flex: none;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.open .name {
+  font-weight: 600;
+}
+
+.name mark {
+  background: transparent;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.error {
+  color: var(--warning);
+}
+
+.warn {
+  color: var(--warning);
+}
+
+.tag {
+  margin-left: auto;
+  font-size: 0.75em;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0 4px;
+}
+
+.rename {
+  flex: 1;
+  min-width: 0;
+  padding: 0 4px;
+  height: 20px;
+}
+
+.dropBefore {
+  border-top-color: var(--accent);
+}
+
+.dropAfter {
+  border-bottom-color: var(--accent);
+}
+
+.dropInside {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.inspector {
+  border-top: 1px solid var(--border);
+  padding: var(--space-2) var(--space-3);
+  background: color-mix(in srgb, var(--warning) 10%, var(--bg));
+}
+
+.inspector p {
+  margin: var(--space-1) 0;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  white-space: pre-wrap;
+}
+
+.inspector .muted {
+  font-family: var(--font-ui);
+  color: var(--text-muted);
+}
+
+.inspectorActions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.scroller:focus-visible .selected {
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+}

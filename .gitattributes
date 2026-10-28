@@ -1,0 +1,9 @@
+# LF everywhere, so a Windows checkout matches Linux byte for byte (biome and rustfmt expect LF).
+* text=auto eol=lf
+
+# Test fixtures are compared byte for byte; keep them exactly as committed (some are CRLF on purpose).
+tests/fixtures/** -text
+
+*.png binary
+*.ico binary
+*.icns binary

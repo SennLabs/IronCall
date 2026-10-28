@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: Bodies
+  version: "1"
+servers:
+  - url: https://bodies.example.com
+tags:
+  - name: forms
+    description: Form and multipart bodies
+  - name: json
+    description: JSON bodies
+paths:
+  /login:
+    post:
+      tags: [forms]
+      summary: Form login
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username: { type: string, example: ada }
+                password: { type: string }
+                remember: { type: boolean, default: true }
+      responses: { "200": { description: ok } }
+  /upload:
+    post:
+      tags: [forms]
+      summary: Upload avatar
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                caption: { type: string, example: "Me at the beach" }
+                file: { type: string, format: binary }
+            encoding:
+              file: { contentType: image/png }
+      responses: { "200": { description: ok } }
+  /example:
+    post:
+      tags: [json]
+      summary: Media example
+      requestBody:
+        content:
+          application/json:
+            example: { a: 1, nested: { b: [true, null] } }
+      responses: { "200": { description: ok } }
+  /examples:
+    post:
+      tags: [json]
+      summary: Named examples (first wins)
+      requestBody:
+        content:
+          application/json:
+            examples:
+              first: { value: { pick: me } }
+              second: { value: { pick: not-me } }
+      responses: { "200": { description: ok } }
+  /schema-example:
+    post:
+      tags: [json]
+      summary: Schema-level example
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              type: object
+              example: { data: { type: users } }
+      responses: { "200": { description: ok } }
+  /external-example:
+    post:
+      tags: [json]
+      summary: External example value
+      requestBody:
+        content:
+          application/json:
+            examples:
+              remote: { externalValue: "https://example.com/body.json" }
+      responses: { "200": { description: ok } }
+  /prefer-json:
+    put:
+      tags: [json]
+      summary: JSON preferred over XML
+      requestBody:
+        content:
+          application/xml:
+            example: "<pet/>"
+          application/json:
+            example: { pet: true }
+      responses: { "200": { description: ok } }
+  /xml:
+    put:
+      summary: XML only
+      requestBody:
+        content:
+          application/xml:
+            example: "<pet><name>Rex</name></pet>"
+      responses: { "200": { description: ok } }
+  /text:
+    put:
+      summary: Plain text
+      requestBody:
+        content:
+          text/plain:
+            example: hello
+      responses: { "200": { description: ok } }
+  /binary:
+    put:
+      summary: Octet stream
+      requestBody:
+        content:
+          application/octet-stream:
+            schema: { type: string, format: binary }
+      responses: { "200": { description: ok } }

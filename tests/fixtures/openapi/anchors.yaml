@@ -1,0 +1,27 @@
+openapi: 3.0.3
+info:
+  title: YAML anchors
+  version: "1"
+servers:
+  - url: https://anchors.example.com
+x-common-responses: &common
+  "200": { description: ok }
+  "500": { description: server error }
+x-paging: &paging
+  - name: page
+    in: query
+    schema: { type: integer, default: 1 }
+  - name: size
+    in: query
+    schema: { type: integer, default: 50 }
+paths:
+  /a:
+    get:
+      summary: A
+      parameters: *paging
+      responses: *common
+  /b:
+    get:
+      summary: B
+      parameters: *paging
+      responses: *common
