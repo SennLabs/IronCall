@@ -3,6 +3,13 @@
 All notable changes to IronCall. The app follows [Semantic Versioning](https://semver.org);
 workspace file schemas are versioned separately (see the end of each release).
 
+## [1.0.1]: 2026-10-29
+
+### Changed
+- New app icon: an anvil with a rebounding arrow, in the same rust-orange and cream as
+  before. The SVG sources (light and a dark variant) live in `src-tauri/icons/src/`;
+  regenerate the PNG, ICO and ICNS set with `cargo tauri icon` from a 1024 px render.
+
 ## [1.0.0]: 2026-10-08
 
 IronCall 1.0 for Linux: 0.9.0's features, plus fixes from a review of the whole app

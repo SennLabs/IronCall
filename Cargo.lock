@@ -2424,7 +2424,7 @@ checksum = "791930b43c0d5973160d90a8f3894509f2b273430f5c5c73b668636d0287c5c0"
 
 [[package]]
 name = "ironcall-app"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "axum",
  "http",
@@ -2452,7 +2452,7 @@ dependencies = [
 
 [[package]]
 name = "ironcall-core"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "base64 0.22.1",
  "encoding_rs",
@@ -2479,7 +2479,7 @@ dependencies = [
 
 [[package]]
 name = "ironcall-http"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "async-compression",
  "axum",
@@ -2512,7 +2512,7 @@ dependencies = [
 
 [[package]]
 name = "ironcall-import"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "base64 0.22.1",
  "insta",
@@ -2525,7 +2525,7 @@ dependencies = [
 
 [[package]]
 name = "ironcall-secrets"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "argon2",
  "chacha20poly1305",
@@ -2545,7 +2545,7 @@ dependencies = [
 
 [[package]]
 name = "ironcall-store"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "blake3",
  "deunicode",

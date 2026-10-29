@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="#16181c"/>
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#g)"/>
+
+  <g fill="#E2703A">
+    <!-- anvil body: horn tapering to the left, flat face, heel on the right -->
+    <path d="M26 118
+             C 56 100, 88 96, 120 96
+             L 212 96 Q 226 96 226 110
+             L 226 128 Q 226 142 212 142
+             L 154 142 L 154 170 L 106 170 L 106 142
+             L 98 142
+             C 70 142, 44 134, 26 118 Z"/>
+    <!-- base block -->
+    <path d="M 82 170 L 178 170
+             L 202 204 Q 206 214 196 214
+             L 64 214 Q 54 214 58 204 Z"/>
+  </g>
+
+  <!-- bouncing arrow: in from upper left, strikes the face, rebounds up-right -->
+  <path d="M 56 30 L 150 86 L 194 46"
+        fill="none" stroke="#E2703A" stroke-width="16"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="216,26 204,63 178,35" fill="#E2703A"/>
+</svg>

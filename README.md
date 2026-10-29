@@ -9,7 +9,7 @@
 Requests are plain YAML files you commit next to your code. Secrets stay on your machine.
 Nothing leaves your computer except the requests you send.
 
-![Version 1.0.0](https://img.shields.io/badge/version-1.0.0-e2703a?style=flat-square)
+![Version 1.0.1](https://img.shields.io/badge/version-1.0.1-e2703a?style=flat-square)
 ![Linux](https://img.shields.io/badge/platform-Linux-2b2f36?style=flat-square&logo=linux&logoColor=white)
 ![Rust](https://img.shields.io/badge/Rust-hyper%20%2B%20rustls-2b2f36?style=flat-square&logo=rust&logoColor=white)
 ![Tauri 2](https://img.shields.io/badge/Tauri-2-2b2f36?style=flat-square&logo=tauri&logoColor=white)
